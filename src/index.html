@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dependency Audit Tool</title>
+  </head>
+  <body>
+    <h1>Frontend Dependency Manager & Audit Tool</h1>
+    <input
+      type="text"
+      id="projectPath"
+      placeholder="Enter project path"
+      value="/home/mehransaghebifard/__part__/sepehr_admin_front"
+    />
+    <button id="runAudit">Run Audit</button>
+    <pre id="auditOutput"></pre>
+
+    <script>
+      document
+        .getElementById("runAudit")
+        .addEventListener("click", async () => {
+          const projectPath = document.getElementById("projectPath").value;
+          const result = await window.electronAPI.runAudit(projectPath);
+          document.getElementById("auditOutput").textContent = result;
+        });
+    </script>
+  </body>
+</html>
